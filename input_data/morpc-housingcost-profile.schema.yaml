@@ -1,0 +1,52 @@
+fields:
+  - name: GEOIDFQ
+    type: string
+    description: 'Unique identifier for the geography as issued by MORPC.  These are identical to fully-qualified Census-issued GEOIDs for Census geographies.'
+  - name: SUMLEVEL
+    type: string
+    description: 'Three-digit code which identifies the geography type for which the GEOIDFQ applies.'
+  - name: NAME
+    type: string
+    description: 'Name of the geography.'    
+  - name: YEAR
+    type: integer
+    description: 'Four-digit year for which the variables are summarized.'
+  - name: Number of sales
+    type: integer
+    description: 'Number of sales that are accounted for in the summary'
+  - name: Median home sale price (2023 dollars)
+    type: integer
+    description: 'Median home sale price for the geography, expressed in dollar values which have been adjusted for inflation as of the most recent year present in the data'
+  - name: Median home sale price (year-of dollars)
+    type: integer
+    description: 'Median home sale price for the geography, expressed in dollar values as of the indicated year (not inflation adjusted)'
+  - name: Median income (2023 dollars)
+    type: integer
+    description: 'Median income for residents of the geography, expressed in dollar values which have been adjusted for inflation as of the most recent year present in the data'
+  - name: Median income (year-of dollars)
+    type: integer
+    description: 'Median income for residents of the geography, expressed in dollar values as of the indicated year (not inflation adjusted)'
+  - name: Median income MOE (year-of dollars)
+    type: integer
+    description: 'Margin of error for the median income, expressed in dollar values as of the indicated year (not inflation adjusted)'
+  - name: Mean income (2023 dollars)
+    type: integer
+    description: 'Mean income for residents of the geography, expressed in dollar values which have been adjusted for inflation as of the most recent year present in the data'
+  - name: Mean income (year-of dollars)
+    type: integer
+    description: 'Mean income for residents of the geography, expressed in dollar values as of the indicated year (not inflation adjusted)'
+  - name: Mean income MOE (year-of dollars)
+    type: integer
+    description: 'Margin of error for the mean income, expressed in dollar values as of the indicated year (not inflation adjusted)'
+  - name: Median sale price/income ratio (MSA med inc)
+    type: number
+    description: 'Ratio of median sale price to median resident income, using the median income for the MSA as a whole'
+  - name: Median sale price/income ratio (geography med inc)
+    type: number
+    description: 'Ratio of median sale price to median resident income, using the median income for the indicated geography'
+missingValues:
+  - ''
+primaryKey:
+  - GEOIDFQ
+  - YEAR
+   

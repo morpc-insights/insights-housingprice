@@ -1,0 +1,14 @@
+name: housingcost
+type: table
+title: MORPC Insights | Housing Cost and Income
+description: Home sale price and household income by year for geographies in the MORPC
+  15-County region.  Sale price data is summarized from Multiple Listing Service (MLS)
+  data.  Income data is from the American Community Survey 1-year estimates.
+profile: data-resource
+path: housingcost-long.csv
+scheme: file
+format: csv
+mediatype: text/csv
+hash: 36ed4c134e7bb1969b45c6eb65133862
+bytes: 420191
+schema: housingcost-long.schema.yaml

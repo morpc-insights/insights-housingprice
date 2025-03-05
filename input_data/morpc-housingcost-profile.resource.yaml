@@ -1,0 +1,11 @@
+name: morpc_housingcost_profile
+type: table
+title: Housing cost profile
+description: Home sale prices, household income by year, and related variables for geographies in the MORPC 15-county region
+profile: data-resource
+path: morpc-housingcost-profile.csv
+format: csv
+mediatype: text/csv
+hash: 8031a92bf0182955513005b57d2afd4b
+bytes: 575799
+schema: morpc-housingcost-profile.schema.yaml
