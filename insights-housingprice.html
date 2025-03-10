@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>housingprice</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>insights-housingprice</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7520,15 +7520,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div>bar = pd.read_excel("./bar.xlsx", sheet_name="Data - Formated USE")
-
-schema = morpc.frictionless_load_schema("../morpc-housingcost-profile/output_data/morpc-housingcost-profile.schema.yaml")
-
-bar = bar.filter(items=schema.field_names, axis="columns")
-
-bar = morpc.cast_field_types(bar, schema, forceInteger=True)
-
-bar.to_csv("../morpc-housingcost-profile/output_data/morpc-housingcost-profile.csv", index=False)
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f266558b-c357-429c-b3ec-074e23751904">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8230,13 +8222,9 @@ frictionless_cast_field_types | INFO | Casting field GEOIDFQ as type string.
 frictionless_cast_field_types | INFO | Casting field SUMLEVEL as type string.
 frictionless_cast_field_types | INFO | Casting field NAME as type string.
 frictionless_cast_field_types | INFO | Casting field YEAR as type integer.
-frictionless_cast_field_types | WARNING | Failed conversion of fieldname YEAR to type 'int'.  Trying type 'Int64' instead.
 frictionless_cast_field_types | INFO | Casting field Number of sales as type integer.
-frictionless_cast_field_types | WARNING | Failed conversion of fieldname Number of sales to type 'int'.  Trying type 'Int64' instead.
 frictionless_cast_field_types | INFO | Casting field Median home sale price (2023 dollars) as type integer.
-frictionless_cast_field_types | WARNING | Failed conversion of fieldname Median home sale price (2023 dollars) to type 'int'.  Trying type 'Int64' instead.
 frictionless_cast_field_types | INFO | Casting field Median home sale price (year-of dollars) as type integer.
-frictionless_cast_field_types | WARNING | Failed conversion of fieldname Median home sale price (year-of dollars) to type 'int'.  Trying type 'Int64' instead.
 frictionless_cast_field_types | INFO | Casting field Median income (2023 dollars) as type integer.
 frictionless_cast_field_types | WARNING | Failed conversion of fieldname Median income (2023 dollars) to type 'int'.  Trying type 'Int64' instead.
 frictionless_cast_field_types | INFO | Casting field Median income (year-of dollars) as type integer.
@@ -9140,6 +9128,91 @@ Casting field GEOID as type string.
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d49501de-77e5-4e76-87ac-6184ef05ffd1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Verify that fields are cast as the types specified in the schema.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fe918bc6-2bb0-4a96-b5ee-676fc867c071">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">housing</span> <span class="o">=</span> <span class="n">morpc</span><span class="o">.</span><span class="n">frictionless_cast_field_types</span><span class="p">(</span><span class="n">housing</span><span class="p">,</span> <span class="n">housingCostSchema</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>frictionless_cast_field_types | INFO | Casting field GEOIDFQ as type string.
+frictionless_cast_field_types | INFO | Casting field NAME as type string.
+frictionless_cast_field_types | INFO | Casting field GEOTYPE as type string.
+frictionless_cast_field_types | INFO | Casting field YEAR as type integer.
+frictionless_cast_field_types | INFO | Casting field Number of sales as type integer.
+frictionless_cast_field_types | INFO | Casting field Median home sale price (2023 dollars) as type integer.
+frictionless_cast_field_types | WARNING | Failed conversion of fieldname Median home sale price (2023 dollars) to type 'int'.  Trying type 'Int64' instead.
+frictionless_cast_field_types | INFO | Casting field Median home sale price (year-of dollars) as type integer.
+frictionless_cast_field_types | WARNING | Failed conversion of fieldname Median home sale price (year-of dollars) to type 'int'.  Trying type 'Int64' instead.
+frictionless_cast_field_types | INFO | Casting field Median income (2023 dollars) as type integer.
+frictionless_cast_field_types | WARNING | Failed conversion of fieldname Median income (2023 dollars) to type 'int'.  Trying type 'Int64' instead.
+frictionless_cast_field_types | INFO | Casting field Median income (year-of dollars) as type integer.
+frictionless_cast_field_types | WARNING | Failed conversion of fieldname Median income (year-of dollars) to type 'int'.  Trying type 'Int64' instead.
+frictionless_cast_field_types | INFO | Casting field Median income MOE (year-of dollars) as type integer.
+frictionless_cast_field_types | WARNING | Failed conversion of fieldname Median income MOE (year-of dollars) to type 'int'.  Trying type 'Int64' instead.
+frictionless_cast_field_types | INFO | Casting field Mean income (2023 dollars) as type integer.
+frictionless_cast_field_types | WARNING | Failed conversion of fieldname Mean income (2023 dollars) to type 'int'.  Trying type 'Int64' instead.
+frictionless_cast_field_types | INFO | Casting field Mean income (year-of dollars) as type integer.
+frictionless_cast_field_types | WARNING | Failed conversion of fieldname Mean income (year-of dollars) to type 'int'.  Trying type 'Int64' instead.
+frictionless_cast_field_types | INFO | Casting field Mean income MOE (year-of dollars) as type integer.
+frictionless_cast_field_types | WARNING | Failed conversion of fieldname Mean income MOE (year-of dollars) to type 'int'.  Trying type 'Int64' instead.
+frictionless_cast_field_types | INFO | Casting field Median sale price/income ratio (MSA med inc) as type number.
+frictionless_cast_field_types | INFO | Casting field Median sale price/income ratio (geography med inc) as type number.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8a225942-e759-4f7f-89de-c262e244489c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Sort the records by GEOIDFQ then by year.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=c90ddc86-51d5-4680-b292-c8788c454332">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [36]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">housing</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">"GEOIDFQ"</span><span class="p">,</span><span class="s2">"YEAR"</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b4b1bf1e-0c90-43c4-8ca2-b2c2689813f1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -9155,7 +9228,7 @@ Casting field GEOID as type string.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [37]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -9169,7 +9242,7 @@ Casting field GEOID as type string.
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[35]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[37]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -9208,94 +9281,94 @@ Casting field GEOID as type string.
 </thead>
 <tbody>
 <tr>
-<th>0</th>
-<td>M010000US001</td>
-<td>15-County Region</td>
-<td>REGION15</td>
+<th>855</th>
+<td>0500000US39041</td>
+<td>Delaware County</td>
+<td>COUNTY</td>
 <td>2012</td>
-<td>21565</td>
-<td>183144</td>
-<td>138000</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>2.569880</td>
-<td>NaN</td>
+<td>2705</td>
+<td>325148</td>
+<td>245000</td>
+<td>113430</td>
+<td>85470</td>
+<td>4375</td>
+<td>137110</td>
+<td>103313</td>
+<td>5123</td>
+<td>4.562469</td>
+<td>2.866503</td>
 </tr>
 <tr>
-<th>1</th>
-<td>M010000US001</td>
-<td>15-County Region</td>
-<td>REGION15</td>
+<th>856</th>
+<td>0500000US39041</td>
+<td>Delaware County</td>
+<td>COUNTY</td>
 <td>2013</td>
-<td>27345</td>
-<td>189526</td>
-<td>144900</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>2.679413</td>
-<td>NaN</td>
+<td>3366</td>
+<td>324378</td>
+<td>248000</td>
+<td>110078</td>
+<td>84159</td>
+<td>6238</td>
+<td>143484</td>
+<td>109699</td>
+<td>4629</td>
+<td>4.585884</td>
+<td>2.946803</td>
 </tr>
 <tr>
-<th>2</th>
-<td>M010000US001</td>
-<td>15-County Region</td>
-<td>REGION15</td>
+<th>857</th>
+<td>0500000US39041</td>
+<td>Delaware County</td>
+<td>COUNTY</td>
 <td>2014</td>
-<td>27054</td>
-<td>196282</td>
-<td>152500</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>2.705292</td>
-<td>NaN</td>
+<td>3166</td>
+<td>332071</td>
+<td>258000</td>
+<td>124783</td>
+<td>96949</td>
+<td>4512</td>
+<td>161748</td>
+<td>125669</td>
+<td>7707</td>
+<td>4.576821</td>
+<td>2.661193</td>
 </tr>
 <tr>
-<th>3</th>
-<td>M010000US001</td>
-<td>15-County Region</td>
-<td>REGION15</td>
+<th>858</th>
+<td>0500000US39041</td>
+<td>Delaware County</td>
+<td>COUNTY</td>
 <td>2015</td>
-<td>29923</td>
-<td>205306</td>
-<td>159700</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>2.744363</td>
-<td>NaN</td>
+<td>3346</td>
+<td>349289</td>
+<td>271700</td>
+<td>123942</td>
+<td>96410</td>
+<td>4514</td>
+<td>160011</td>
+<td>124467</td>
+<td>5943</td>
+<td>4.669027</td>
+<td>2.818172</td>
 </tr>
 <tr>
-<th>4</th>
-<td>M010000US001</td>
-<td>15-County Region</td>
-<td>REGION15</td>
+<th>859</th>
+<td>0500000US39041</td>
+<td>Delaware County</td>
+<td>COUNTY</td>
 <td>2016</td>
-<td>31986</td>
-<td>215824</td>
-<td>170000</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>2.819518</td>
-<td>NaN</td>
+<td>3571</td>
+<td>356745</td>
+<td>281000</td>
+<td>129105</td>
+<td>101693</td>
+<td>6016</td>
+<td>162652</td>
+<td>128117</td>
+<td>8227</td>
+<td>4.660497</td>
+<td>2.763219</td>
 </tr>
 </tbody>
 </table>
@@ -9320,7 +9393,7 @@ Casting field GEOID as type string.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [36]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [38]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">HOUSING_COST_TABLE_PATH</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -9345,7 +9418,7 @@ Casting field GEOID as type string.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [37]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [39]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">housingResource</span> <span class="o">=</span> <span class="n">morpc</span><span class="o">.</span><span class="n">frictionless_create_resource</span><span class="p">(</span><span class="n">HOUSING_COST_FILENAME</span><span class="p">,</span> 
@@ -9395,7 +9468,7 @@ morpc.frictionless_validate_resource | INFO | Resource is valid
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [49]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">scandir</span><span class="p">(</span><span class="n">chartDir</span><span class="p">):</span>
@@ -9588,7 +9661,7 @@ morpc.frictionless_validate_resource | INFO | Resource is valid
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [62]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">columnNames</span><span class="o">=</span><span class="p">[</span><span class="s2">"TileID"</span><span class="p">,</span><span class="s2">"TilesetID"</span><span class="p">,</span><span class="s2">"GeographyType"</span><span class="p">,</span><span class="s2">"GeographyName"</span><span class="p">,</span><span class="s2">"Category"</span><span class="p">,</span><span class="s2">"Headline"</span><span class="p">,</span><span class="s2">"Commentary"</span><span class="p">,</span><span class="s2">"ThumbnailURL"</span><span class="p">,</span><span class="s2">"Contributor"</span><span class="p">,</span><span class="s2">"Vintage"</span><span class="p">,</span><span class="s2">"UpdateInterval"</span><span class="p">,</span><span class="s2">"ShareURL"</span><span class="p">,</span><span class="s2">"DataProductURL"</span><span class="p">,</span><span class="s2">"MoreInformationURL"</span><span class="p">]</span>
@@ -9613,7 +9686,7 @@ morpc.frictionless_validate_resource | INFO | Resource is valid
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [63]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">catalog</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">housing</span><span class="p">[</span><span class="s2">"GEOIDFQ"</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">platformIncludeList</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -9638,7 +9711,7 @@ morpc.frictionless_validate_resource | INFO | Resource is valid
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [64]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">catalog</span> <span class="o">=</span> <span class="n">catalog</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="s2">"GEOIDFQ"</span><span class="p">,</span><span class="s2">"NAME"</span><span class="p">,</span><span class="s2">"GEOTYPE"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="s2">"columns"</span><span class="p">)</span> \
@@ -9666,7 +9739,7 @@ morpc.frictionless_validate_resource | INFO | Resource is valid
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [65]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">catalog</span><span class="p">[</span><span class="s2">"GeographyType"</span><span class="p">]</span> <span class="o">=</span> <span class="n">catalog</span><span class="p">[</span><span class="s2">"GeographyType"</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span>
@@ -9696,7 +9769,7 @@ morpc.frictionless_validate_resource | INFO | Resource is valid
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [66]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">catalog</span><span class="p">[</span><span class="s2">"TileID"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
@@ -9725,7 +9798,7 @@ morpc.frictionless_validate_resource | INFO | Resource is valid
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [67]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">catalog</span><span class="p">[</span><span class="s2">"ThumbnailURL"</span><span class="p">]</span> <span class="o">=</span> <span class="n">catalog</span><span class="p">[</span><span class="s2">"GEOIDFQ"</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">geoid</span><span class="p">:</span><span class="s2">"https://raw.githubusercontent.com/morpc-insights/insights-housingprice/refs/heads/main/output_data/charts/</span><span class="si">{}</span><span class="s2">.svg"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">geoid</span><span class="p">))</span>
@@ -9750,7 +9823,7 @@ morpc.frictionless_validate_resource | INFO | Resource is valid
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [68]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">catalog</span><span class="p">[</span><span class="s2">"Contributor"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Mid-Ohio Regional Planning Commission"</span>
@@ -9778,7 +9851,7 @@ morpc.frictionless_validate_resource | INFO | Resource is valid
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [69]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">catalog</span><span class="p">[</span><span class="s2">"DataProductURL"</span><span class="p">]</span> <span class="o">=</span> <span class="n">catalog</span><span class="p">[</span><span class="s2">"GEOIDFQ"</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">geoid</span><span class="p">:</span><span class="s2">"https://www.arcgis.com/apps/dashboards/237dd7c3dc694feebe0b3e6381f45f93#geoid=</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">geoid</span><span class="p">))</span>
@@ -9803,7 +9876,7 @@ morpc.frictionless_validate_resource | INFO | Resource is valid
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [70]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">catalog</span><span class="p">[</span><span class="s2">"MoreInformationURL"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"https://morpc1-my.sharepoint.com/:w:/g/personal/aporr_morpc_org/EeowBvR-mvJEsEDFbiSWb1kBE5DcjowKjyYzzKE35vwfwg?e=KCvIsQ"</span>
@@ -9828,7 +9901,7 @@ morpc.frictionless_validate_resource | INFO | Resource is valid
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [71]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">catalog</span> <span class="o">=</span> <span class="n">catalog</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="n">columnNames</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">"columns"</span><span class="p">)</span>
@@ -9848,150 +9921,16 @@ morpc.frictionless_validate_resource | INFO | Resource is valid
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=173c04f6-0a80-477c-994e-c717608aa51e">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=173c04f6-0a80-477c-994e-c717608aa51e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [72]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">catalog</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[72]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>TileID</th>
-<th>TilesetID</th>
-<th>GeographyType</th>
-<th>GeographyName</th>
-<th>Category</th>
-<th>Headline</th>
-<th>Commentary</th>
-<th>ThumbnailURL</th>
-<th>Contributor</th>
-<th>Vintage</th>
-<th>UpdateInterval</th>
-<th>ShareURL</th>
-<th>DataProductURL</th>
-<th>MoreInformationURL</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>None</td>
-<td>None</td>
-<td>County</td>
-<td>Delaware County</td>
-<td>None</td>
-<td>TBD</td>
-<td>TBD</td>
-<td>https://raw.githubusercontent.com/morpc-insigh...</td>
-<td>Mid-Ohio Regional Planning Commission</td>
-<td>2025</td>
-<td>annually</td>
-<td>None</td>
-<td>https://www.arcgis.com/apps/dashboards/237dd7c...</td>
-<td>https://morpc1-my.sharepoint.com/:w:/g/persona...</td>
-</tr>
-<tr>
-<th>1</th>
-<td>None</td>
-<td>None</td>
-<td>County</td>
-<td>Fairfield County</td>
-<td>None</td>
-<td>TBD</td>
-<td>TBD</td>
-<td>https://raw.githubusercontent.com/morpc-insigh...</td>
-<td>Mid-Ohio Regional Planning Commission</td>
-<td>2025</td>
-<td>annually</td>
-<td>None</td>
-<td>https://www.arcgis.com/apps/dashboards/237dd7c...</td>
-<td>https://morpc1-my.sharepoint.com/:w:/g/persona...</td>
-</tr>
-<tr>
-<th>2</th>
-<td>None</td>
-<td>None</td>
-<td>County</td>
-<td>Fayette County</td>
-<td>None</td>
-<td>TBD</td>
-<td>TBD</td>
-<td>https://raw.githubusercontent.com/morpc-insigh...</td>
-<td>Mid-Ohio Regional Planning Commission</td>
-<td>2025</td>
-<td>annually</td>
-<td>None</td>
-<td>https://www.arcgis.com/apps/dashboards/237dd7c...</td>
-<td>https://morpc1-my.sharepoint.com/:w:/g/persona...</td>
-</tr>
-<tr>
-<th>3</th>
-<td>None</td>
-<td>None</td>
-<td>County</td>
-<td>Franklin County</td>
-<td>None</td>
-<td>TBD</td>
-<td>TBD</td>
-<td>https://raw.githubusercontent.com/morpc-insigh...</td>
-<td>Mid-Ohio Regional Planning Commission</td>
-<td>2025</td>
-<td>annually</td>
-<td>None</td>
-<td>https://www.arcgis.com/apps/dashboards/237dd7c...</td>
-<td>https://morpc1-my.sharepoint.com/:w:/g/persona...</td>
-</tr>
-<tr>
-<th>4</th>
-<td>None</td>
-<td>None</td>
-<td>County</td>
-<td>Hocking County</td>
-<td>None</td>
-<td>TBD</td>
-<td>TBD</td>
-<td>https://raw.githubusercontent.com/morpc-insigh...</td>
-<td>Mid-Ohio Regional Planning Commission</td>
-<td>2025</td>
-<td>annually</td>
-<td>None</td>
-<td>https://www.arcgis.com/apps/dashboards/237dd7c...</td>
-<td>https://morpc1-my.sharepoint.com/:w:/g/persona...</td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 </div>
 </div>
@@ -10012,7 +9951,7 @@ morpc.frictionless_validate_resource | INFO | Resource is valid
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [73]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">catalog</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s2">"catalog.xlsx"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
